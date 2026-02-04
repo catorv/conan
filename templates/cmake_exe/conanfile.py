@@ -20,6 +20,9 @@ class {{package_name}}Recipe(ConanFile):
     # Sources are located in the same place as this recipe, copy them to the recipe
     exports_sources = "CMakeLists.txt", "src/*"
 
+    options = {"build_target": [None, "{{ name }}", "ANY"]}
+    default_options = {"build_target": None}
+
     def layout(self):
         cmake_layout(self)
 
@@ -32,7 +35,10 @@ class {{package_name}}Recipe(ConanFile):
     def build(self):
         cmake = CMake(self)
         cmake.configure()
-        cmake.build()
+        if self.options.build_target:
+            cmake.build(target=str(self.options.build_target))
+        else:
+            cmake.build()
 
     def package(self):
         cmake = CMake(self)
