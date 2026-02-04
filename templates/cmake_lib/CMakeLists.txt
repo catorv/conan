@@ -3,7 +3,7 @@ project({{name}} CXX)
 
 include_directories(
     ${PROJECT_SOURCE_DIR}/include/
-    )
+)
 
 {% if requires is defined -%}
 {% for require in requires -%}
