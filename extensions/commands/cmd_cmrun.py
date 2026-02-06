@@ -71,7 +71,6 @@ def cmrun(conan_api: ConanAPI, parser: ArgumentParser, *args):
     for key, value in ((k, v) for k, v in opts.items() if v is not None):
         cmd_args.extend([f"--{key}", value])
 
-    print(cmd_args)
     conan_api.command.run(cmd_args + other_args)
     subprocess.run([f"build/{build_type}/{build_target}"] + run_args)
 
