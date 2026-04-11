@@ -135,7 +135,7 @@ def get_first_executable_from_cmake():
     with open("CMakeLists.txt", "r") as f:
         for line in f:
             line = line.strip()
-            m = re.match(r"add_executable\(\s*(\w+)", line)
+            m = re.match(r"add_executable\(\s*(\S+)", line)
             if m:
                 return m.group(1)
     print("No executable found in CMakeLists.txt")
@@ -152,7 +152,7 @@ def find_executable_from_cmake(name):
             line = line.strip()
             if name not in line:
                 continue
-            m = re.match(r"^add_executable\(\s*(\w+)", line)
+            m = re.match(r"^add_executable\(\s*(\S+)", line)
             if m and m.group(1) == name:
                 return m.group(1)
 
@@ -163,7 +163,7 @@ def find_executable_from_cmake(name):
             line = line.strip()
             if name not in line:
                 continue
-            m = re.match(r"^add_executable\(\s*(\w+)", line)
+            m = re.match(r"^add_executable\(\s*(\S+)", line)
             if m:
                 return m.group(1)
     print(f"No executable matching '{name}' was found in CMakeLists.txt")
