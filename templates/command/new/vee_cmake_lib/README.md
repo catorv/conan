@@ -30,3 +30,5 @@
 - `bin/`: 存放最终生成的二进制可执行文件。也可用于存放构建与部署相关脚本。
 - `tests/`: 存放单元测试或集成测试代码。
 - `lib/`: 存放外部链接库文件。
+
+> Powered by <https://github.com/catorv/conan>
